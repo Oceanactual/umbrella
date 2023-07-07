@@ -1,6 +1,7 @@
 gmap_weather = ENV.fetch("GMAP_KEY")
 require ("http")
 require ("json")
+require ("ascii_charts")
 
 pirate_weather = ENV.fetch("PIRATE_WEATHER_KEY")
 
@@ -36,10 +37,10 @@ pp "For the next hour it will be " + pirate_min_sum + "."
 pirate_hour = pirate_raw.fetch("hourly")
 pirate_hour_array = pirate_hour.fetch("data")
 
-pirate_hour_twelve = pirate_hour_array[0..11]
+#pirate_hour_twelve = pirate_hour_array[0..11]
 
-pirate_hour_twelve.each do |percip|
-  percip.keys[4]
+pirate_hour_array[0..11].each do |percip|
+  #percip.keys[4]
   percent_chance = percip.fetch("precipProbability").round(1) * 100
   pp "The chance of rain during is #{percent_chance}%."
 end
